@@ -5,8 +5,7 @@
             <nav
                 class="navbar navbar-expand-lg  blur border-radius-xl top-0 z-index-fixed shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
                 <div class="container-fluid px-0">
-                    <a class="navbar-brand font-weight-bolder ms-sm-3"
-                        href="https://demos.creative-tim.com/material-kit/index" rel="tooltip"
+                    <a class="navbar-brand font-weight-bolder ms-sm-3" href="{% url 'index' %}" rel="tooltip"
                         title="Designed and Coded by Creative Tim" data-placement="bottom" target="_blank">
                         Django Shop
                     </a>
@@ -22,7 +21,8 @@
                     <div class="collapse navbar-collapse pt-3 pb-2 py-lg-0 w-100" id="navigation">
                         <ul class="navbar-nav navbar-nav-hover me-auto">
                             <li class="nav-item  mx-2">
-                                <a class="nav-link ps-2 d-flex cursor-pointer align-items-center">
+                                <a href="{% url 'listing' %}"
+                                    class="nav-link ps-2 d-flex cursor-pointer align-items-center">
                                     <i class="material-icons opacity-6 me-2 text-md">dashboard</i>
                                     Products
                                 </a>

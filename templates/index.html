@@ -10,9 +10,34 @@
 {% endblock css %}
 
 {% block content %}
-<div class="container">
-
-</div>
+<!-- header -->
+<header class="bg-gradient-dark">
+    <div class="page-header min-vh-75"
+        style="background-image: url({% static 'img/bg9.jpg' %}); transform: translate3d(0px, 0px, 0px);">
+        <span class="mask bg-gradient-dark opacity-6"></span>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center mx-auto my-auto">
+                    <h1 class="text-white">Welcome to Django Shop</h1>
+                    <p class="lead mb-4 text-white opacity-8">We’re constantly trying to express ourselves and actualize
+                        our dreams. If you have the opportunity to play this game</p>
+                    <a href="{% url 'listing' %}" type="submit" class="btn bg-white text-dark">View Catalogue</a>
+                    <h6 class="text-white mb-2 mt-5">Find us on</h6>
+                    <div class="d-flex justify-content-center">
+                        <a href="javascript:;"><i class="fab fa-facebook text-lg text-white me-4"
+                                aria-hidden="true"></i></a>
+                        <a href="javascript:;"><i class="fab fa-instagram text-lg text-white me-4"
+                                aria-hidden="true"></i></a>
+                        <a href="javascript:;"><i class="fab fa-twitter text-lg text-white me-4"
+                                aria-hidden="true"></i></a>
+                        <a href="javascript:;"><i class="fab fa-google-plus text-lg text-white"
+                                aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
 {% endblock content %}
 
 {% block js %}
