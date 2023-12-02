@@ -3,5 +3,24 @@
 
 {% block title %}Products | All{% endblock %}
 
+{% block css %}
+    <style>
+        .product-area {
+            margin-top: 100px;
+        }
+    </style>
+{% endblock css %}
+    
 {% block content %}
+<div class="container product-area ">
+    <div class="row">
+        
+        {% for product in products %}
+            {% include 'components/product_card.html' %}
+        {% empty %}
+            
+        {% endfor %}
+            
+    </div>
+</div>
 {% endblock %}

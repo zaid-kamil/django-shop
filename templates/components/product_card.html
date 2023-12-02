@@ -1,0 +1,22 @@
+{% load static %}
+<div class="col-lg-3 col-sm-6">
+    <div class="card card-plain">
+        <div class="card-header p-0 position-relative">
+            <a class="d-block blur-shadow-image">
+                <img src="{{product.image.url}}" alt="img-blur-shadow"
+                    class="img-fluid shadow border-radius-lg" loading="lazy">
+            </a>
+        </div>
+        <div class="card-body px-0">
+            <h5>
+                <a href="javascript:;" class="text-dark font-weight-bold">{{product.name}}</a>
+            </h5>
+            <p>
+                {{product.description|truncatewords:12}}
+            </p>
+            <a href="{% url 'detail' product.slug %}" class="text-info text-sm icon-move-right">Detail
+                <i class="fas fa-arrow-right text-xs ms-1" aria-hidden="true"></i>
+            </a>
+        </div>
+    </div>
+</div>
