@@ -56,5 +56,5 @@ def signup_view(request):
         messages.success(request, 'You have successfully registered')
         return redirect('login')
     else:
-        return render(request, 'accounts/signup.html')
+        return render(request, 'accounts/register.html')
     
