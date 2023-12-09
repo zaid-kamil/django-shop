@@ -1,0 +1,62 @@
+{% load static %}
+{% if messages %}
+<div class="toast-container position-absolute top-0 end-0 p-3">
+    {% for message in messages %}
+    {% if message.tags %}
+    {% if message.tags == 'success' %}
+    <div class="toast bg-success text-white" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <i class="fas fa-info-circle me-2"></i>
+            <strong class="me-auto">Django Shop</strong>
+            <small class="text-muted">just now</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            {{ message}}
+        </div>
+    </div>
+    {% elif message.tags == 'error' %}
+    <div class="toast bg-danger text-white" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <i class="fas fa-info-circle me-2"></i>
+            <strong class="me-auto">Django Shop</strong>
+            <small class="text-muted">just now</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            {{ message}}
+        </div>
+    </div>
+    {% elif message.tags == 'warning' %}
+    <div class="toast bg-warning text-white" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <i class="fas fa-info-circle me-2"></i>
+            <strong class="me-auto">Django Shop</strong>
+            <small class="text-muted">just now</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            {{ message}}
+        </div>
+    </div>
+    {% elif message.tags == 'info' %}
+    <div class="toast bg-info text-white" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <i class="fas fa-info-circle me-2"></i>
+            <strong class="me-auto">Django Shop</strong>
+            <small class="text-muted">just now</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            {{ message}}
+        </div>
+    </div>
+    {% endif %}
+    {% else %}
+    <p>
+        {{ message}}
+    </p>
+    {% endif %}
+    {% endfor %}
+</div>
+{% endif %}

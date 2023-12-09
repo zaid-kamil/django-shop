@@ -4,23 +4,52 @@
 {% block title %}Products | All{% endblock %}
 
 {% block css %}
-    <style>
-        .product-area {
-            margin-top: 100px;
-        }
-    </style>
+<style>
+    .product-area {
+        margin-top: 100px;
+    }
+</style>
 {% endblock css %}
-    
+
 {% block content %}
 <div class="container product-area ">
     <div class="row">
-        
+
         {% for product in products %}
-            {% include 'components/product_card.html' %}
+        {% include 'components/product_card.html' %}
         {% empty %}
-            
+        <h1>No Products</h1>
         {% endfor %}
-            
+        <!-- pagination -->
+        <nav class="pager">
+            <ul class="pagination">
+                {% if products.has_previous %}
+                <li class="page-item ">
+                    <a class="page-link rounded-1" href="?page={{ products.previous_page_number }}">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                </li>
+                {% endif %}
+                {% for i in products.paginator.page_range %}
+                {% if products.number == i %}
+                <li class="page-item active ">
+                    <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                </li>
+                {% else %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                </li>
+                {% endif %}
+                {% endfor %}
+                {% if products.has_next %}
+                <li class="page-item  rounded-1">
+                    <a class="page-link" href="?page={{ products.next_page_number }}">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
     </div>
 </div>
 {% endblock %}

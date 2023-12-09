@@ -1,15 +1,34 @@
 {% load static %}
+<style>
+    .product-detail {
+        margin-top: 10rem;
+    }
+
+    .product-img {
+        height: 300px;
+        object-fit: cover;
+        width: 100%;
+        object-position: top left;
+    }
+</style>
 <div class="col-lg-3 col-sm-6">
     <div class="card card-plain">
         <div class="card-header p-0 position-relative">
-            <a class="d-block blur-shadow-image">
+            <a class="d-block ">
+
+                {% if product.image %}
                 <img src="{{product.image.url}}" alt="img-blur-shadow"
-                    class="img-fluid shadow border-radius-lg" loading="lazy">
+                    class="img-fluid shadow border-radius-lg product-img" loading="lazy">
+                {% else %}
+                <img src="{% static 'img/macbook.png' %}" alt="img-blur-shadow"
+                    class="img-fluid shadow border-radius-lg product-img" loading="lazy">
+                {% endif %}
+
             </a>
         </div>
         <div class="card-body px-0">
             <h5>
-                <a href="javascript:;" class="text-dark font-weight-bold">{{product.name}}</a>
+                <a href="{% url 'detail' product.slug %}" class="text-dark font-weight-bold">{{product.name}}</a>
             </h5>
             <p>
                 {{product.description|truncatewords:12}}
