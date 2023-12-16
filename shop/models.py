@@ -8,7 +8,6 @@ class Category(models.Model):
     slug = models.SlugField(max_length=255)
     class Meta:
         verbose_name_plural = 'Categories'
-    
     def __str__(self):
         return self.name
     
@@ -37,7 +36,6 @@ class ProductImage(models.Model):
         return self.product.name
     
 class Cart(models.Model):
-    cart_id = models.CharField(max_length=255, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     date_added = models.DateTimeField(auto_now_add=True)
     

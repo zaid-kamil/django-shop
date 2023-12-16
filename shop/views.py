@@ -5,6 +5,7 @@ from django.core.paginator import Paginator, EmptyPage, InvalidPage
 from django.contrib import messages
 # decorators
 from django.contrib.auth.decorators import login_required
+from uuid import uuid4
 
 
 
@@ -38,8 +39,17 @@ def view_cart(request):
         cart = Cart.objects.get(id=cart_id)
         ctx = {'cart': cart}
     else:
-        empty_message = 'Your cart is empty, please keep shopping.'
-        ctx = {'empty': True, 'empty_message': empty_message}
+        cart = Cart.objects.filter(user=request.user)[0]
+        if cart is not None:
+            request.session['cart_id'] = cart.id
+            ctx = {
+                'cart': cart,
+                'cart_count': cart.items.count(),
+                'empty': False
+                }
+        else:
+            empty_message = 'Your cart is empty, please keep shopping.'
+            ctx = {'empty': True, 'empty_message': empty_message}
     return render(request, 'shop/cart.html', ctx)
 
 @login_required
@@ -61,8 +71,8 @@ def add_to_cart(request, pid):
         cart.save()
     # no cart yet
     else:
-        cart = Cart.objects.create()
-        print(product.price)
+        user = request.user
+        cart = Cart.objects.create(user=user)
         cart_item = CartItem.objects.create(cart=cart, product=product,quantity=1, price=product.price)
         cart.items.add(cart_item)
         cart.save()
