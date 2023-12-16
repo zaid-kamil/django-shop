@@ -42,7 +42,11 @@
                             <li class="nav-item my-auto ms-3 ms-lg-0">
                                 <a href="#" class="btn btn-sm bg-gradient-primary  mb-0 me-1 mt-2 mt-md-0">
                                     <i class="fa fa-shopping-cart fa-2x"></i>
-                                    <span class="badge badge-light ">3</span>
+                                    {% if request.session.cart|length > 0 %}
+                                    <span class="badge badge-light ">
+                                        {{request.session.cart|length}}
+                                    </span>
+                                    {% endif %}
                                 </a>
                             </li>
                             {% endif %}

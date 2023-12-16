@@ -46,8 +46,9 @@ class Cart(models.Model):
     
 class CartItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    cart = models.ForeignKey(Cart, on_delete=models.CASCADE, related_name='cart_items')
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE, related_name='items')
     quantity = models.IntegerField()
+    price = models.DecimalField(max_digits=6, decimal_places=2)
     is_active = models.BooleanField(default=True)
     
     def sub_total(self):
@@ -99,4 +100,5 @@ class Payment(models.Model):
     def __str__(self):
         return self.user.username
     
+
 

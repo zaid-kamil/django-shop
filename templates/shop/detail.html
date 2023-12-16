@@ -56,7 +56,9 @@
                                         <a class="btn bg-gradient-danger btn-sm mb-0 mt-3"
                                             href="{% url 'admin:shop_product_change' product.id %}">Edit product</a>
                                         {% else %}
-                                        <a class="btn bg-gradient-info btn-sm mb-0 mt-3" href="">Add to Cart</a>
+                                        <a class="btn bg-gradient-info btn-sm mb-0 mt-3"
+                                            href="{% url 'add_to_cart' product.id %}">
+                                            Add to Cart</a>
                                         {% endif %}
 
                                     </div>
